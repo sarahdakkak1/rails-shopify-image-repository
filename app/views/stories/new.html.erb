@@ -1,0 +1,12 @@
+<!-- app/views/restaurants/_form.html.erb -->
+<div class="container">
+<div class="row justify-content-center">
+
+<h1>Best stories </h1>
+<h5>Add your own stories</h5>
+<%= simple_form_for(@story) do |f| %>
+  <%= f.input :name %>
+  <%= f.button :submit, class: 'btn btn-primary' %>
+<% end %>
+</div>
+</div>
