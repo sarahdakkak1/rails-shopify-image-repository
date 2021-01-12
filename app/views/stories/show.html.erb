@@ -1,3 +1,6 @@
 <h1><%= @story.name %></h1>
   <%= link_to "Back to all stories", stories_path %>
   <div class="row">
+  <img class="d-block w-100"  src= "<%= cl_image_path @story.photos[0].key, crop: :fill %>", height: "300", width:"550">
+
+   <%= link_to 'Delete this story', story_path(@story), method: :delete, :data => {:confirm => 'Are you sure? '}, class: "btn btn-success"%>

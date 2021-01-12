@@ -1,14 +1,15 @@
-  <h1>My fav <span>stories</span></h1>
+  <h1>Image <span>Uploads</span></h1>
 
-</div>
 
-<div class="row">
-  <% @stories.each do |story|%>
-        <div class="col-12 col-md-6 col-lg-3">
+   <a class="nav-link" href=""><%= link_to "Add a new picture", new_story_path %> </a>
 
-    <div class="card-category" style="background-image: url('<%= cl_image_path cocktail.photo.key, height: 300, width: 400, crop: :fill %>')">
+  <div class="row">
+      <% @stories.each do |story|%>
+      <div class="card-category"
+      style="background-image: url('<%= cl_image_path story.photos[0].key, height: 200, width: 300, crop: :fill %>')">
       <%= link_to story.name.capitalize, story_path(story), class: "text-white text-decoration-none" %>
-</div>
-</div>
+    </div>
+    <br>
   <% end %>
-
+</div>
+</div>
