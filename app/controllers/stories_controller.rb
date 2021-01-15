@@ -1,4 +1,5 @@
 class StoriesController < ApplicationController
+
   def home
     @stories = Story.all
   end
