@@ -11,7 +11,10 @@
   <% end %>
 <br>
 <br>
+   <%  if current_user == @story.user %>
+
    <%= link_to 'Delete this story', story_path(@story), method: :delete, :data => {:confirm => 'Are you sure? '}, class: "btn btn-success"%>
+    <% end %>
 </div>
 </div>
 

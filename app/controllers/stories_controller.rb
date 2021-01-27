@@ -1,4 +1,6 @@
 class StoriesController < ApplicationController
+  before_action :authenticate_user!, only: [:home, :show, :index]
+
 
   def home
     @stories = Story.all
@@ -18,6 +20,7 @@ class StoriesController < ApplicationController
 
   def create
     @story = Story.new(story_params)
+    @story.user = current_user
     if @story.save
       redirect_to story_path(@story)
     else
@@ -26,9 +29,16 @@ class StoriesController < ApplicationController
   end
 
   def destroy
-    @story = Story.find(params[:id])
-      @story.destroy
-      redirect_to story_path(@story)
+    story = Story.find(params[:id])
+    if current_user == story.user
+      story.destroy
+      redirect_to root_path
+    else
+      render(
+        html: "<script>alert('You can't delete this motorcycle post because you are not the owner')</script>".html_safe,
+        layout: 'application'
+      )
+    end
   end
 
   private
